@@ -168,6 +168,7 @@ public class VistaRectangulo extends javax.swing.JFrame {
         btnCrear.addActionListener(this::btnCrearActionPerformed);
 
         btnEscalar.setText("Escalar");
+        btnEscalar.addActionListener(this::btnEscalarActionPerformed);
 
         btnMover.setText("Mover");
         btnMover.addActionListener(this::btnMoverActionPerformed);
@@ -305,6 +306,28 @@ try {
         JOptionPane.showMessageDialog(this, "Error: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
     }    // TODO add your handling code here:
     }//GEN-LAST:event_btnMoverActionPerformed
+
+    private void btnEscalarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEscalarActionPerformed
+    try {
+        double factor = Double.parseDouble(txtFactor.getText());
+
+        boolean ok = controlador.escalarRectangulo(factor);
+        if (ok) {
+            JOptionPane.showMessageDialog(this, "Rectangulo escalado correctamente.");
+        } else {
+            JOptionPane.showMessageDialog(this, "Primero debe crear el rectangulo.",
+                    "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    } catch (NumberFormatException ex) {
+        JOptionPane.showMessageDialog(this, "Debe ingresar un numero valido.",
+                "Error de formato", JOptionPane.ERROR_MESSAGE);
+    } catch (ArithmeticException ex) {
+        JOptionPane.showMessageDialog(this, ex.getMessage(),
+                "Error aritmetico", JOptionPane.ERROR_MESSAGE);
+    } catch (Exception ex) {
+        JOptionPane.showMessageDialog(this, "Error: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+    }    // TODO add your handling code here:
+    }//GEN-LAST:event_btnEscalarActionPerformed
 
     /**
      * @param args the command line arguments
