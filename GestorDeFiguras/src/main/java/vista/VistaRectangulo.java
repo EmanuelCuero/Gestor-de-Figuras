@@ -55,7 +55,7 @@ public class VistaRectangulo extends javax.swing.JFrame {
         btnValidar = new javax.swing.JToggleButton();
         btnMostrar = new javax.swing.JToggleButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        areaResultado = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -206,9 +206,9 @@ public class VistaRectangulo extends javax.swing.JFrame {
                 .addContainerGap(37, Short.MAX_VALUE))
         );
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        areaResultado.setColumns(20);
+        areaResultado.setRows(5);
+        jScrollPane1.setViewportView(areaResultado);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -264,7 +264,25 @@ public class VistaRectangulo extends javax.swing.JFrame {
     }//GEN-LAST:event_txtFactorActionPerformed
 
     private void btnCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearActionPerformed
-        // TODO add your handling code here:
+try {
+        double x1 = Double.parseDouble(txtX1.getText());
+        double y1 = Double.parseDouble(txtY1.getText());
+        double x2 = Double.parseDouble(txtX2.getText());
+        double y2 = Double.parseDouble(txtY2.getText());
+
+        boolean ok = controlador.crearRectangulo(x1, y1, x2, y2);
+        if (ok) {
+            JOptionPane.showMessageDialog(this, "Rectangulo creado correctamente.");
+        } else {
+            JOptionPane.showMessageDialog(this, "Datos invalidos: los puntos no pueden ser iguales.",
+                    "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    } catch (NumberFormatException ex) {
+        JOptionPane.showMessageDialog(this, "Debe ingresar valores numericos validos.",
+                "Error de formato", JOptionPane.ERROR_MESSAGE);
+    } catch (Exception ex) {
+        JOptionPane.showMessageDialog(this, "Error: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+    }        // TODO add your handling code here:
     }//GEN-LAST:event_btnCrearActionPerformed
 
     /**
@@ -293,6 +311,7 @@ public class VistaRectangulo extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextArea areaResultado;
     private javax.swing.JToggleButton btnCrear;
     private javax.swing.JToggleButton btnEscalar;
     private javax.swing.JToggleButton btnMostrar;
@@ -311,7 +330,6 @@ public class VistaRectangulo extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField txtDeltaX;
     private javax.swing.JTextField txtDeltaY;
     private javax.swing.JTextField txtFactor;
