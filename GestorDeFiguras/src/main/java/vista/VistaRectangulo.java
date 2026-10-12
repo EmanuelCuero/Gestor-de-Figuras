@@ -255,7 +255,15 @@ public class VistaRectangulo extends javax.swing.JFrame {
     }//GEN-LAST:event_txtX1ActionPerformed
 
     private void btnMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarActionPerformed
-        // TODO add your handling code here:
+try {
+        String datos = controlador.obtenerDatos();
+        areaResultado.setText(datos);
+    } catch (ArithmeticException ex) {
+        JOptionPane.showMessageDialog(this, ex.getMessage(),
+                "Error aritmetico", JOptionPane.ERROR_MESSAGE);
+    } catch (Exception ex) {
+        JOptionPane.showMessageDialog(this, "Error: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+    }        // TODO add your handling code here:
     }//GEN-LAST:event_btnMostrarActionPerformed
 
     private void txtY2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtY2ActionPerformed
