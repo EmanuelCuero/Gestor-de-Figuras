@@ -308,6 +308,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Validar Punto"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnValidarActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JToggleButton" name="btnMostrar">
               <Properties>

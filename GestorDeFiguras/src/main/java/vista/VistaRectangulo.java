@@ -174,6 +174,7 @@ public class VistaRectangulo extends javax.swing.JFrame {
         btnMover.addActionListener(this::btnMoverActionPerformed);
 
         btnValidar.setText("Validar Punto");
+        btnValidar.addActionListener(this::btnValidarActionPerformed);
 
         btnMostrar.setText("Mostrar Datos");
         btnMostrar.addActionListener(this::btnMostrarActionPerformed);
@@ -328,6 +329,31 @@ try {
         JOptionPane.showMessageDialog(this, "Error: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
     }    // TODO add your handling code here:
     }//GEN-LAST:event_btnEscalarActionPerformed
+
+    private void btnValidarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnValidarActionPerformed
+     try {
+        double x = Double.parseDouble(txtPuntoX.getText());
+        double y = Double.parseDouble(txtPuntoY.getText());
+
+        if (!controlador.hayRectangulo()) {
+            JOptionPane.showMessageDialog(this, "Primero debe crear el rectangulo.",
+                    "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        boolean dentro = controlador.validarPuntoDentro(x, y);
+        if (dentro) {
+            JOptionPane.showMessageDialog(this, "El punto SI esta dentro del rectangulo.");
+        } else {
+            JOptionPane.showMessageDialog(this, "El punto NO esta dentro del rectangulo.");
+        }
+    } catch (NumberFormatException ex) {
+        JOptionPane.showMessageDialog(this, "Debe ingresar valores numericos validos.",
+                "Error de formato", JOptionPane.ERROR_MESSAGE);
+    } catch (Exception ex) {
+        JOptionPane.showMessageDialog(this, "Error: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+    }   // TODO add your handling code here:
+    }//GEN-LAST:event_btnValidarActionPerformed
 
     /**
      * @param args the command line arguments
