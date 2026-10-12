@@ -3,7 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package vista;
-
+import controlador.ControladorRectangulo;
+import javax.swing.JOptionPane;
 /**
  *
  * @author usuario
@@ -11,13 +12,15 @@ package vista;
 public class VistaRectangulo extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(VistaRectangulo.class.getName());
-
+    private ControladorRectangulo controlador;
     /**
      * Creates new form VistaRectangulo
      */
     public VistaRectangulo() {
-        initComponents();
-    }
+    this.controlador = new ControladorRectangulo();
+    initComponents();
+    this.setLocationRelativeTo(null);
+}
 
     /**
      * This method is called from within the constructor to initialize the form.
