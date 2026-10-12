@@ -8,6 +8,10 @@ package modelo;
  *
  * @author emanu
  */
-public class IOperable {
-    
+// interfaz que define las operaciones comunes de las figuras
+public interface IOperable {
+    double calcularArea();
+    void mover(double deltaX, double deltaY);
+    void escalar(double factor);
+    boolean contienePunto(double x, double y);
 }
