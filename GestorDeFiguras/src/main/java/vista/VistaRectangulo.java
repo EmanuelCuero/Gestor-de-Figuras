@@ -170,6 +170,7 @@ public class VistaRectangulo extends javax.swing.JFrame {
         btnEscalar.setText("Escalar");
 
         btnMover.setText("Mover");
+        btnMover.addActionListener(this::btnMoverActionPerformed);
 
         btnValidar.setText("Validar Punto");
 
@@ -284,6 +285,26 @@ try {
         JOptionPane.showMessageDialog(this, "Error: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
     }        // TODO add your handling code here:
     }//GEN-LAST:event_btnCrearActionPerformed
+
+    private void btnMoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoverActionPerformed
+    try {
+        double deltaX = Double.parseDouble(txtDeltaX.getText());
+        double deltaY = Double.parseDouble(txtDeltaY.getText());
+
+        boolean ok = controlador.moverRectangulo(deltaX, deltaY);
+        if (ok) {
+            JOptionPane.showMessageDialog(this, "Rectangulo movido correctamente.");
+        } else {
+            JOptionPane.showMessageDialog(this, "Primero debe crear el rectangulo.",
+                    "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    } catch (NumberFormatException ex) {
+        JOptionPane.showMessageDialog(this, "Debe ingresar valores numericos validos.",
+                "Error de formato", JOptionPane.ERROR_MESSAGE);
+    } catch (Exception ex) {
+        JOptionPane.showMessageDialog(this, "Error: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+    }    // TODO add your handling code here:
+    }//GEN-LAST:event_btnMoverActionPerformed
 
     /**
      * @param args the command line arguments
